@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <title>Product List</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    table,tr ,th, td {
+      border: 1px solid white;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      background-color: #96D4D4;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Manage Product</h1>
+  <form th:action="@{/findName}" method="post">
+    <h6>Tìm kiếm theo tên</h6>
+<!--    <input list="browsers" name="idActive">-->
+<!--    <datalist id="browsers">-->
+<!--      <option value="1">-->
+<!--      <option value="2">-->
+<!--      <option value="3">-->
+<!--    </datalist>-->
+        <input type="text" name="name">
+    <input type="submit", value="search">
+  </form>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>Mô tả</th>
+      <th>người Tạo</th>
+      <th>ngày tạo</th>
+      <th colspan="3">Menu</th>
+    </tr>
+    <tr th:each="profile : ${profiles}">
+      <td th:text="${profile.id}"></td>
+      <td th:text="${profile.name}"></td>
+      <td th:text="${profile.moTa}"></td>
+      <td th:text="${profile.nguoiTao}"></td>
+      <td th:text="${profile.ngayTao}"></td>
+      <td><a th:href="@{/editprofile?id={id}(id=${profile.id})}"
+             class="btn btn-primary">Edit</a> <a
+        th:href="@{/deleteprofile?id={id}(id=${profile.id})}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  </table>
+  <a href="/addProfile" class="btn btn-success">Add Profile</a>
+  <h4><a href="/brandview">view brand</a></h4>
+  <h4><a href="/lichSuView">view Lịch Sử</a></h4>
+  <h4><a href="/tramphatview">view Trạm Phát</a></h4>
+</div>
+</body>
+</html>
+

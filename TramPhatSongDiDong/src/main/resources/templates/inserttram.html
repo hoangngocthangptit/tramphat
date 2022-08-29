@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <meta charset="ISO-8859-1">
+  <title>Insert title here</title>
+</head>
+<body>
+<h1>New Tr?m</h1>
+<div class="col-md-auto">
+  <form th:object="${tramphat}" th:action="@{saveTramPhat}" action="#" method="post">
+    <div style="clear: both; display: block; height: 10px"></div>
+    <div>
+      <label th:text="trangThai" th:for="trangThai"></label>
+      <input type="text" th:field="*{trangThai}" class="form-control" placeholder="name"/>
+    </div>
+    <div style="clear: both; display: block; height: 10px"></div>
+    <div>
+      <label th:text="diaChi" th:for="diaChi"></label>
+      <input type="text" th:field="*{diaChi}" class="form-control" placeholder="nguoiTao"/>
+    </div>
+<!--&lt;!&ndash;
+  <div style="clear: both; display: block; height: 10px"></div>---->
+    <div style="clear: both; display: block; height: 10px"></div>
+    <input type="submit" class="btn btn-success" value="Save"/>
+  </form>
+</div>
+</body>
+</html>

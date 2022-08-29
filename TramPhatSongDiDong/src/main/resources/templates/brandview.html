@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <title>Product List</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    table,tr ,th, td {
+      border: 1px solid white;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      background-color: #96D4D4;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Manage Brand</h1>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>Mô tả</th>
+      <th>người Tạo</th>
+      <th>ngày tạo</th>
+      <th colspan="3">Menu</th>
+    </tr>
+    <tr th:each="brand : ${brands}">
+      <td th:text="${brand.id}"></td>
+      <td th:text="${brand.name}"></td>
+      <td th:text="${brand.moTa}"></td>
+      <td th:text="${brand.nguoiTao}"></td>
+      <td th:text="${brand.ngayTao}"></td>
+      <td><a th:href="@{/editbrand?id={id}(id=${brand.id})}"
+             class="btn btn-primary">Edit</a> <a
+        th:href="@{/deletebrand?id={id}(id=${brand.id})}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  </table>
+  <a href="/addbrand" class="btn btn-success">Add Brand</a>
+  <h3><a href="/profilesview">view profile</a></h3>
+  <h3><a href="/lichSuView">view Lịch Sử</a></h3>
+  <h3><a href="/tramphatview">view Trạm Phát</a></h3>
+</div>
+</body>
+</html>
+

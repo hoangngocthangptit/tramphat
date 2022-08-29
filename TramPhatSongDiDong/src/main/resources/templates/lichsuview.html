@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <title>Product List</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    table,tr ,th, td {
+      border: 1px solid white;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      background-color: #96D4D4;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Manage Lich Su</h1>
+  <form th:action="@{/searchByid}" method="post">
+    <h6>Tìm kiếm theo id active</h6>
+    <input list="browsers" name="idActive">
+    <datalist id="browsers">
+      <option value="1">
+      <option value="2">
+      <option value="3">
+    </datalist>
+<!--    <input type="text" name="idActive">-->
+    <input type="submit", value="search">
+  </form>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>id active</th>
+      <th>Ngày Cap Nhat</th>
+      <th>id UserName</th>
+    </tr>
+    <tr th:each="lichsu : ${lichsus}">
+      <td th:text="${lichsu.id}"></td>
+      <td th:text="${lichsu.idActive}"></td>
+      <td th:text="${lichsu.ngayEdit}"></td>
+      <td th:text="${lichsu.idUserName}"></td>
+    </tr>
+  </table>
+  <h2><a href="/brandview">view brand</a></h2>
+  <h2><a href="/profilesview">view profile</a></h2>
+</div>
+</body>
+</html>
+

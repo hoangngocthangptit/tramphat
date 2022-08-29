@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <title>Product List</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    table,tr ,th, td {
+      border: 1px solid white;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      background-color: #96D4D4;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Manage Tram Phat</h1>
+
+
+  <table>
+    <tr>
+      <th>id</th>
+      <th>trang thai</th>
+      <th>địa chỉ</th>
+      <th>id Brand</th>
+      <th>ngày tạo</th>
+      <th colspan="3">Menu</th>
+    </tr>
+    <tr th:each="tramphat : ${tramphats}">
+      <td th:text="${tramphat.id}"></td>
+      <td th:text="${tramphat.trangThai}"></td>
+      <td th:text="${tramphat.diaChi}"></td>
+      <td th:text="${tramphat.idBrand}"></td>
+      <td th:text="${tramphat.ngayTao}"></td>
+      <td><a th:href="@{/editTramPhat?id={id}(id=${tramphat.id})}"
+             class="btn btn-primary">Edit</a>
+        <a
+        th:href="@{/deletetram?id={id}(id=${tramphat.id})}" class="btn btn-danger">Delete</a>
+      <td><a th:href="@{/addTram?id={id}(id=${tramphat.id})}"
+             class="btn btn-primary">add Profiles</a>
+      </td>
+    </tr>
+  </table>
+  <a href="/addtram" class="btn btn-success">Add Trạm</a>
+  <h4><a href="/brandview">view brand</a></h4>
+  <h4><a href="/profilesview">view profile</a></h4>
+  <h4><a href="/lichSuView">view Lịch Sử</a></h4>
+</div>
+</body>
+</html>
+
